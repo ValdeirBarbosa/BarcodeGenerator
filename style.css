@@ -169,3 +169,19 @@ form,
     font-size: 40px;
    
   }
+
+  .barcode-galerry{
+    display: flex;
+    gap:1rem;
+  }
+
+  .barcode-card{
+    border:1px solid #000;
+    padding-top:20px;
+    flex:1;
+    max-height: 200px;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
