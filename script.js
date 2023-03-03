@@ -7,8 +7,8 @@ const canvas1 = document.getElementById("barcode1");
 
 
 
-JsBarcode("#barcode", "0000000000", {
-  width: 2,
+JsBarcode("#barcode", "3891", {
+  width: 4,
   height: 100,
   font: "Arial",
   background: "#fff",
