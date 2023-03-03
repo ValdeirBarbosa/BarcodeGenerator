@@ -7,6 +7,7 @@
   body {
     background-color: #e5e5e5;
     padding:30px;
+    min-width:400px;
   }
   
   body::before {
@@ -39,14 +40,14 @@ form,
     margin: 64px;
     padding:20px;
     border-radius: 20px;
-    max-width:600px;
+    width:400px;
 
 
    
     
     
     
-    flex:1;
+   
   }
   
   fieldset {
@@ -70,6 +71,7 @@ form,
   
     background: #fafafc;
     width:100%;
+    text-align: center;
   
     border: 1px solid #e6e6f0;
     border-radius: 8px;
@@ -95,7 +97,7 @@ form,
   }
   
   .data-wrapper input{
-    text-align: center;
+    text-align: right;
   }
   
   
