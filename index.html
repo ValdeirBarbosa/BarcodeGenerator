@@ -1,71 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./JsBarcode.all.js" defer></script>
     <script src="./script.js" defer></script>
     <link rel="icon" type="image/x-icon" href="/assets/barcode_icon.ico">
-    <link rel="stylesheet" href="style.css">
-    <title>Barcode Gen</title>
-</head>
-
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
     <header>
-        <div class="header-container">
-
-            <h1>BARCODE GENERATOR</h1><svg width="96" xmlns="http://www.w3.org/2000/svg" height="96" viewBox="0 0 96 96"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path
-                    d="m87,18.093h-78c-3.312,0-6,2.688-6,6v50.814c0,3.312 2.688,6 6,6h78c3.312,
-            0 6-2.688 6-6v-50.814c0-3.312-2.688-6-6-6zm-69,53.814h-6v-44.814h6v44.814zm6-5.814h-3v-39h3v39zm9,
-            0h-3v-39h3v39zm9,0h-6v-39h6v39zm6,0h-3v-39h3v39zm12,0h-6v-39h6v39zm6,0h-3v-39h3v39zm9,0h-3v-39h3v39zm9,5.814h-6v-44.814h6v44.814z" />
-            </svg>
-        </div>
-
-
+      <h1>BARCODE GENERATOR II</h1>
     </header>
-    </div>
     <main>
-        <div class="form-container">
-            <form id="my-event">
-                <fieldset>
-                    <legend>DADOS BARCODE <small> (ITF)</small> </legend>
-                    <div class="input-wrapper">
-                        <label for="titlulo">TÍTULO </label>
-                        <input type="text" name="titulo" id="titlulo" />
-                    </div>
-
-                    <div class="input-wrapper">
-                        <label for="sobrenome">CONTEUDO </label>
-                        <input type="text" name="conteudo" id="conteudo" />
-                    </div>
-                    <div class="container-btn">
-                        <Button type="submit" form="my-event" value="Submit">GERAR</Button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <svg class="barcode"></svg>
-        <div class="barcode-galerry">
-            <h1>TOTAL BARCODE: <span>0</span></h1>
-            <div class="barcode-gallerycontainer">
-
-                
-                <!-- <div class="barcode-card">
-                    <div class="profile">
-                        <p>BARCODE BY JsBarcode</p>
-                    </div>
-                    <svg class="barcode"></svg>
-                </div> -->
-
+      <div class="form-container">
+        <form id="my-event">
+          <fieldset>
+            <legend>DADOS BARCODE <small> (ITF)</small></legend>
+            <div class="input-wrapper">
+              <label for="titulo">TÍTULO </label>
+              <input type="text" name="titulo" id="titulo" />
             </div>
+
+            <div class="input-wrapper">
+              <label for="conteudo">CONTEUDO </label>
+              <input type="text" name="conteudo" id="conteudo" />
+            </div>
+            <div class="container-btn">
+              <button type="submit" form="my-event" value="Submit">
+                GERAR
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="data-container">
+        <div class="data-row-title">
+          <div class="title">TITULO</div>
+          <div class="barcode-data">BARCODE</div>
+        </div>
+        <div class="barcode-table"></div>
+      </div>
+
+      <div class="barcode-main">
+        <div class="barcode-gallerycontainer"></div>
+      </div>
     </main>
-    <footer>
 
-        <p>Resources from <a href="https://lindell.me/JsBarcode/">JSbarcode</a></p>
-        <small>made by Valdeir Barbosa</small>
-    </footer>
-</body>
-
+    <footer>footer</footer>
+  </body>
 </html>

@@ -1,84 +1,65 @@
+const titleBarcode = document.querySelector('.input-wrapper #titulo')
+const dataBarcode = document.querySelector('.input-wrapper #conteudo')
+const btnBarcode = document.querySelector('.container-btn button')
+const barcodeList = document.querySelector('.data-container .barcode-table')
+
+const barcodeGallery = document.querySelector('.barcode-gallerycontainer')
+
+// let barcodes = []
 
 
-const canvas = document.getElementById("barcode");
-const canvas1 = document.getElementById("barcode1");
-
-const btn = document.querySelector('.container-btn Button')
-
-const barcodeTitle = document.querySelector('#titlulo')
-const barcodeData = document.querySelector('#conteudo')
-const barcodeGallery = document.querySelector(".barcode-gallerycontainer")
-
+btnBarcode.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(titleBarcode.value, String(dataBarcode.value).padStart(8, "0"))
+    barcodeList.innerHTML += ` <div class="data-row">
+    <div class="title">${titleBarcode.value}</div>
+    <div class="barcode-data" id=${String(dataBarcode.value).padStart(8, "0")}>${String(dataBarcode.value).padStart(8, "0")}</div>
+</div>`
 
 
 
-let barcodelist = []
+    // barcodes.push({
+    //     titulo:String(titleBarcode.value),
+    //     itf:String(dataBarcode.value).padStart(8,"0")
+
+    // })
+
+    let barcodes = [{
+        titulo: String(titleBarcode.value),
+        itf: String(dataBarcode.value).padStart(8, "0")
+
+    }]
 
 
+    for (let bar of barcodes) {
+        const el = document.createElement("canvas");
+        el.setAttribute("id", bar.titulo.split(' ').join('') + bar.itf);
+
+        const card = document.createElement("div")
+        card.classList.add("barcode-card")
+        const cardProfile = document.createElement("div")
+        cardProfile.classList.add("barcode-profile")
+        const barUserName = document.createElement("h1")
+        barUserName.textContent = bar.titulo
+        
+        card.appendChild(cardProfile)
+        cardProfile.appendChild(barUserName)
+        barcodeGallery.appendChild(card);
+        card.appendChild(el)
 
 
-barcodeData.addEventListener('change',()=>{
+        JsBarcode(`#${bar.titulo.split(' ').join('')}${bar.itf}`, bar.itf, {
+            width: 3,
+            height: 50,
+            font: "Arial",
+            background: "#f5f5f5",
+            lineColor: "#000",
+            format: "ITF",
+        });
+    }
 
-  codigo = barcodeData.value
+
 
 })
 
 
-
-
-btn.addEventListener('click', (event) => {
-  
-  barcopdeTitulo = barcodeTitle.value
-  barcodeBody = barcodeData.value
-
-  event.preventDefault();
-  facrotyTag(barcodeData.value)
-
-  console.log(typeof(barcodeBody))
-
-})
-
-
-JsBarcode(".barcode","88888888", {
-  width: 2,
-  height: 100,
-  font: "Arial",
-  background: "#fff",
-  lineColor: "#000",
-  format: "ITF"
-});
-
-
-
-function facrotyTag(tituloText) {
-
-  const barcodeCard = document.createElement("div");
-  barcodeCard.className = "barcode-card"
-  
-  const barcodeProfile = document.createElement("div");
-  barcodeProfile.className = "profile"
-  
-  const titulo = document.createElement("p");
-  titulo.innerText=tituloText
-  
-  const svgBarcode = document.createElement("svg");
-  svgBarcode.className="barcode"
-  
-  
-  barcodeCard.appendChild(barcodeProfile)
-  barcodeProfile.appendChild(titulo)
-  barcodeCard.appendChild(svgBarcode)
-
-  let barcodeG = document.querySelector('.barcode')
-  
-  barcodelist.push(barcodeG)
-
-console.log(barcodelist)
-
-
-
-
-
-
-
-}
