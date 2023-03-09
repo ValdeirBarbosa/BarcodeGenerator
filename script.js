@@ -12,7 +12,7 @@ const teste2 = document.querySelector('.data-container')
 const barcodeGallery = document.querySelector('#barcode-gallerycontainer')
 
 // let barcodes = []
-
+let pagecount = 0
 
 btnBarcode.addEventListener('click', (event) => {
   event.preventDefault();
@@ -22,14 +22,6 @@ btnBarcode.addEventListener('click', (event) => {
     <div class="barcode-data" id=${String(dataBarcode.value).padStart(8, "0")}>${String(dataBarcode.value).padStart(8, "0")}</div>
 </div>`
 
-
-
-  // barcodes.push({
-  //     titulo:String(titleBarcode.value),
-  //     itf:String(dataBarcode.value).padStart(8,"0")
-
-  // })
-
   let barcodes = [
     {
       titulo: String(titleBarcode.value),
@@ -37,7 +29,7 @@ btnBarcode.addEventListener('click', (event) => {
     }
   ]
 
-
+  
   for (let bar of barcodes) {
     const el = document.createElement("canvas");
     el.setAttribute("id", bar.titulo.split(' ').join('') + bar.itf);
@@ -53,10 +45,13 @@ btnBarcode.addEventListener('click', (event) => {
     cardProfile.appendChild(barUserName)
     barcodeGallery.appendChild(card);
     card.appendChild(el)
-
+    // pagecount++
+    // if(pagecount%21==0){
+    //   card.className.add('breakPage')
+    // }
 
     JsBarcode(`#${bar.titulo.split(' ').join('')}${bar.itf}`, bar.itf, {
-      width: 3,
+      width: 2,
       height: 50,
       font: "Arial",
       background: "#f5f5f5",
@@ -69,12 +64,24 @@ btnBarcode.addEventListener('click', (event) => {
 
 
 print.addEventListener('click',()=>{
-  // printJS('barcode-gallerycontainer', 'html');
 
-  printJS({
-    printable:'barcode-gallerycontainer',
-    type: 'html'
-  });
+  const main = document.querySelector('main')
+  const printPage = document.createElement('div')
+  printPage.textContent= pagecount
+
+  // main.appendChild(printPage)
+  printPage.setAttribute('id','print-page')
+
+  printJS({printable: 'barcode-gallerycontainer', type: 'html', css: 'style.css', properties: {
+    marginTop: '90mm',
+    marginBottom: '90mm',
+    marginLeft: '10mm',
+    marginRight: '10mm'
+  }})
+  let barcodeArr = document.querySelectorAll(".barcode-card")
+  for (let bcode of barcodeArr){
+    // console.log(bcode)
+  }
 
 })
 
