@@ -3,7 +3,13 @@ const dataBarcode = document.querySelector('.input-wrapper #conteudo')
 const btnBarcode = document.querySelector('.container-btn button')
 const barcodeList = document.querySelector('.data-container .barcode-table')
 
-const barcodeGallery = document.querySelector('.barcode-gallerycontainer')
+let print = document.querySelector('header svg')
+
+
+const teste = document.querySelector('.form-container')
+const teste2 = document.querySelector('.data-container')
+
+const barcodeGallery = document.querySelector('#barcode-gallerycontainer')
 
 // let barcodes = []
 
@@ -58,6 +64,18 @@ btnBarcode.addEventListener('click', (event) => {
       format: "ITF",
     });
   }
+})
+
+
+
+print.addEventListener('click',()=>{
+  // printJS('barcode-gallerycontainer', 'html');
+
+  printJS({
+    printable:'barcode-gallerycontainer',
+    type: 'html'
+  });
+
 })
 
 

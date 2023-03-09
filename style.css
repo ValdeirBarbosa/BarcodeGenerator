@@ -16,8 +16,24 @@ header {
   margin-bottom: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
+}
+header h1{
  
+  align-self: center;
+  
+}
+
+header svg{
+  cursor: pointer;
+  position: relative;
+  /* Adjust these values accordingly */
+  
+  left: 200px;
+}
+
+header svg:hover path{
+  fill:#EEE
 }
 main {
   margin-left: 0.5rem;
@@ -30,12 +46,12 @@ main {
   display: flex;
   gap:1rem;
 }
-.barcode-main{
+#barcode-main{
   flex:2;
   width: 900px;
   height: 75vh;
 }
-.barcode-gallerycontainer
+#barcode-gallerycontainer
 {
 
   display: flex;
@@ -46,7 +62,7 @@ main {
   overflow-y: auto; 
 }
 
-.barcode-main,
+#barcode-main,
 .data-container{
     background-color: #f5f5f5;
     max-height: 75vh;
@@ -217,3 +233,6 @@ form {
    color:#FFF;
     text-align: center;
   }
+
+
+
