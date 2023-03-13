@@ -14,18 +14,22 @@ const barcodeGallery = document.querySelector('#barcode-gallerycontainer')
 // let barcodes = []
 let pagecount = 0
 
+
+
 btnBarcode.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log(titleBarcode.value, String(dataBarcode.value).padStart(8, "0"))
+  // console.log(titleBarcode.value, String(dataBarcode.value).padStart(10, "0"))
+
+ console.log( mod11(dataBarcode.value))
   barcodeList.innerHTML += ` <div class="data-row">
     <div class="title">${titleBarcode.value}</div>
-    <div class="barcode-data" id=${String(dataBarcode.value).padStart(8, "0")}>${String(dataBarcode.value).padStart(8, "0")}</div>
+    <div class="barcode-data" id=${String(dataBarcode.value).padStart(9, "0")}>${String(dataBarcode.value).padStart(9, "0")+mod11(dataBarcode.value)}</div>
 </div>`
 
   let barcodes = [
     {
       titulo: String(titleBarcode.value),
-      itf: String(dataBarcode.value).padStart(8, "0")
+      itf: `${String(dataBarcode.value).padStart(9,"0")}${mod11(dataBarcode.value)}`
     }
   ]
 
@@ -86,3 +90,34 @@ print.addEventListener('click',()=>{
 })
 
 
+
+
+function mod11(numero) {
+  let soma = 0;
+  let multiplicador = 2;
+  
+  // percorre os dígitos do número da direita para a esquerda
+  for (let i = numero.length - 1; i >= 0; i--) {
+    // multiplica o dígito pelo multiplicador atual e soma o resultado
+    soma += numero[i] * multiplicador;
+    
+    // incrementa o multiplicador
+    multiplicador++;
+    
+    // se o multiplicador chegar a 10, reinicia em 2
+    if (multiplicador === 10) {
+      multiplicador = 2;
+    }
+  }
+  
+  // calcula o resto da divisão da soma por 11
+  const resto = soma % 11;
+  
+  // se o resto for 0 ou 1, o dígito verificador é 0
+  if (resto === 0 || resto === 1) {
+    return 0;
+  }
+  
+  // caso contrário, o dígito verificador é a diferença entre 11 e o resto
+  return 11 - resto;
+}
